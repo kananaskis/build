@@ -1,0 +1,61 @@
+7767517
+59 66
+Input                    data                     0 1 data -23330=4,3,112,112,1 0=112 1=112 2=1
+Convolution              conv1_merged             1 1 data relu1 -23330=4,3,56,56,16 0=16 1=3 3=2 4=1 5=1 6=144 9=1
+Convolution              conv2_merged             1 1 relu1 relu2 -23330=4,3,28,28,16 0=16 1=3 3=2 4=1 5=1 6=2304 9=1
+Split                    splitncnn_0              1 2 relu2 relu2_splitncnn_0 relu2_splitncnn_1 -23330=8,3,28,28,16,3,28,28,16
+Convolution              conv3_merged             1 1 relu2_splitncnn_1 relu3 -23330=4,3,28,28,48 0=48 1=1 5=1 6=768 9=1
+ConvolutionDepthWise     conv4_merged             1 1 relu3 relu4 -23330=4,3,28,28,48 0=48 1=3 4=1 5=1 6=432 7=48 9=1
+Convolution              conv5_merged             1 1 relu4 conv5_merged -23330=4,3,28,28,16 0=16 1=1 5=1 6=768
+Eltwise                  add1                     2 1 relu2_splitncnn_0 conv5_merged add1 -23330=4,3,28,28,16 0=1
+Split                    splitncnn_1              1 2 add1 add1_splitncnn_0 add1_splitncnn_1 -23330=8,3,28,28,16,3,28,28,16
+Convolution              conv6_merged             1 1 add1_splitncnn_1 relu5 -23330=4,3,28,28,48 0=48 1=1 5=1 6=768 9=1
+ConvolutionDepthWise     conv7_merged             1 1 relu5 relu6 -23330=4,3,28,28,48 0=48 1=3 4=1 5=1 6=432 7=48 9=1
+Convolution              conv8_merged             1 1 relu6 conv8_merged -23330=4,3,28,28,16 0=16 1=1 5=1 6=768
+Eltwise                  add2                     2 1 add1_splitncnn_0 conv8_merged add2 -23330=4,3,28,28,16 0=1
+Convolution              conv9_merged             1 1 add2 relu7 -23330=4,3,14,14,16 0=16 1=3 3=2 4=1 5=1 6=2304 9=1
+Convolution              conv10_merged            1 1 relu7 relu8 -23330=4,3,14,14,48 0=48 1=3 4=1 5=1 6=6912 9=1
+ConvolutionDepthWise     conv11_merged            1 1 relu8 relu9 -23330=4,3,14,14,48 0=48 1=3 4=1 5=1 6=432 7=48 9=1
+Convolution              conv12_merged            1 1 relu9 conv12_merged -23330=4,3,14,14,16 0=16 1=1 5=1 6=768
+Split                    splitncnn_2              1 2 conv12_merged conv12_merged_splitncnn_0 conv12_merged_splitncnn_1 -23330=8,3,14,14,16,3,14,14,16
+Convolution              conv13_merged            1 1 conv12_merged_splitncnn_1 relu10 -23330=4,3,14,14,48 0=48 1=1 5=1 6=768 9=1
+ConvolutionDepthWise     conv14_merged            1 1 relu10 relu11 -23330=4,3,14,14,48 0=48 1=3 4=1 5=1 6=432 7=48 9=1
+ConvolutionDepthWise     conv15_merged            1 1 relu11 relu12 -23330=4,3,14,14,48 0=48 1=3 4=1 5=1 6=432 7=48 9=1
+Convolution              conv16_merged            1 1 relu12 conv16_merged -23330=4,3,14,14,16 0=16 1=1 5=1 6=768
+Eltwise                  add3                     2 1 conv12_merged_splitncnn_0 conv16_merged add3 -23330=4,3,14,14,16 0=1
+Convolution              conv17_merged            1 1 add3 relu13 -23330=4,3,7,7,32 0=32 1=3 3=2 4=1 5=1 6=4608 9=1
+Convolution              conv18_merged            1 1 relu13 relu14 -23330=4,3,7,7,192 0=192 1=3 4=1 5=1 6=55296 9=1
+ConvolutionDepthWise     conv19_merged            1 1 relu14 relu15 -23330=4,3,7,7,192 0=192 1=3 4=1 5=1 6=1728 7=192 9=1
+Convolution              conv20_merged            1 1 relu15 conv20_merged -23330=4,3,7,7,32 0=32 1=1 5=1 6=6144
+Split                    splitncnn_3              1 2 conv20_merged conv20_merged_splitncnn_0 conv20_merged_splitncnn_1 -23330=8,3,7,7,32,3,7,7,32
+Convolution              conv21_merged            1 1 conv20_merged_splitncnn_1 relu16 -23330=4,3,7,7,192 0=192 1=1 5=1 6=6144 9=1
+ConvolutionDepthWise     conv22_merged            1 1 relu16 relu17 -23330=4,3,7,7,192 0=192 1=3 4=1 5=1 6=1728 7=192 9=1
+ConvolutionDepthWise     conv23_merged            1 1 relu17 relu18 -23330=4,3,7,7,192 0=192 1=3 4=1 5=1 6=1728 7=192 9=1
+Convolution              conv24_merged            1 1 relu18 conv24_merged -23330=4,3,7,7,32 0=32 1=1 5=1 6=6144
+Eltwise                  add4                     2 1 conv20_merged_splitncnn_0 conv24_merged add4 -23330=4,3,7,7,32 0=1
+Convolution              conv25_merged            1 1 add4 relu19 -23330=4,3,7,7,192 0=192 1=1 5=1 6=6144 9=1
+ConvolutionDepthWise     conv26_merged            1 1 relu19 relu20 -23330=4,3,7,7,192 0=192 1=3 4=1 5=1 6=1728 7=192 9=1
+Convolution              conv27_merged            1 1 relu20 conv27_merged -23330=4,3,7,7,40 0=40 1=1 5=1 6=7680
+Split                    splitncnn_4              1 2 conv27_merged conv27_merged_splitncnn_0 conv27_merged_splitncnn_1 -23330=8,3,7,7,40,3,7,7,40
+Convolution              conv28_merged            1 1 conv27_merged_splitncnn_1 relu21 -23330=4,3,7,7,240 0=240 1=1 5=1 6=9600 9=1
+ConvolutionDepthWise     conv29_merged            1 1 relu21 relu22 -23330=4,3,7,7,240 0=240 1=3 4=1 5=1 6=2160 7=240 9=1
+Convolution              conv30_merged            1 1 relu22 conv30_merged -23330=4,3,7,7,40 0=40 1=1 5=1 6=9600
+Eltwise                  add5                     2 1 conv27_merged_splitncnn_0 conv30_merged add5 -23330=4,3,7,7,40 0=1
+Convolution              conv31_merged            1 1 add5 relu23 -23330=4,3,4,4,72 0=72 1=3 3=2 4=1 5=1 6=25920 9=1
+Convolution              conv32_merged            1 1 relu23 relu24 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=279936 9=1
+ConvolutionDepthWise     conv33_merged            1 1 relu24 relu25 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=3888 7=432 9=1
+Convolution              conv34_merged            1 1 relu25 conv34_merged -23330=4,3,4,4,72 0=72 1=1 5=1 6=31104
+Split                    splitncnn_5              1 2 conv34_merged conv34_merged_splitncnn_0 conv34_merged_splitncnn_1 -23330=8,3,4,4,72,3,4,4,72
+Convolution              conv35_merged            1 1 conv34_merged_splitncnn_1 relu26 -23330=4,3,4,4,432 0=432 1=1 5=1 6=31104 9=1
+ConvolutionDepthWise     conv36_merged            1 1 relu26 relu27 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=3888 7=432 9=1
+ConvolutionDepthWise     conv37_merged            1 1 relu27 relu28 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=3888 7=432 9=1
+Convolution              conv38_merged            1 1 relu28 conv38_merged -23330=4,3,4,4,72 0=72 1=1 5=1 6=31104
+Eltwise                  add6                     2 1 conv34_merged_splitncnn_0 conv38_merged add6 -23330=4,3,4,4,72 0=1
+Split                    splitncnn_6              1 2 add6 add6_splitncnn_0 add6_splitncnn_1 -23330=8,3,4,4,72,3,4,4,72
+Convolution              conv39_merged            1 1 add6_splitncnn_1 relu29 -23330=4,3,4,4,432 0=432 1=1 5=1 6=31104 9=1
+ConvolutionDepthWise     conv40_merged            1 1 relu29 relu30 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=3888 7=432 9=1
+ConvolutionDepthWise     conv41_merged            1 1 relu30 relu31 -23330=4,3,4,4,432 0=432 1=3 4=1 5=1 6=3888 7=432 9=1
+Convolution              conv42_merged            1 1 relu31 conv42_merged -23330=4,3,4,4,72 0=72 1=1 5=1 6=31104
+Eltwise                  add7                     2 1 add6_splitncnn_0 conv42_merged add7 -23330=4,3,4,4,72 0=1
+Convolution              conv43_merged            1 1 add7 relu32 -23330=4,3,2,2,96 0=96 1=3 5=1 6=62208 9=1
+InnerProduct             fc1_filled_zeros         1 1 relu32 fc1_filled_zeros -23330=4,1,8,1,1 0=8 1=1 2=3072
