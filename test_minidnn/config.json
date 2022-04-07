@@ -1,0 +1,15 @@
+{
+"model_file_path":"car_cls_reg_m4c_0.0.7_191008_fill_channels_fp16.txt",
+"net_file_path":"car_cls_reg_m4c_0.0.7_191008_fill_channels_cpu_fp16.json",
+"run_mode":0,
+"pad":1,
+"unsigned_out":true,
+"cpu_id":7,
+"output_names":["conv16_filled_zeros","conv19_filled_zeros"],
+"output_sizes":[]
+,"input_names":["data1"],
+"input_files":["input_data_0"],
+"input_sizes":[[3, 80, 80]],
+"means":[[0.000000e+00,0.000000e+00,0.000000e+00]],
+"scales":[[3.906250e-03,3.906250e-03,3.906250e-03]]
+}
