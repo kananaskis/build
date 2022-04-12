@@ -1,4 +1,6 @@
 {
 "Input":{"dim": [1, 1, 112, 112], "scale": [0.00390625], "name": "data", "bottom": [], "top": "data", "mean_value": [0.0], "pad": 1},
-"ConvolutionReLU":{"num_output": 16, "stride": 1, "pad": 0, "name": "relu1", "bottom": ["data"], "has_relu": true, "top": "relu1", "bias_iterm": true, "kernel_size": 3}
+"ConvolutionReLU":{"num_output": 16, "stride": 1, "pad": 0, "name": "relu1", "bottom": ["data"], "has_relu": true, "top": "relu1", "bias_iterm": true, "kernel_size": 3},
+"ConvolutionReLU":{"num_output": 64, "stride": 1, "pad": 0, "name": "relu2", "bottom": ["relu1"], "has_relu": true, "top": "relu2", "bias_iterm": true, "kernel_size": 1},
+"ConvolutionReLU":{"num_output": 64, "stride": 2, "pad": 1, "name": "relu3", "bottom": ["relu2"], "has_relu": true, "top": "relu3", "bias_iterm": true, "kernel_size": 3}
 }
