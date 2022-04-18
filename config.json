@@ -1,0 +1,15 @@
+{
+    "model_file_path": "objs.txt",
+    "net_file_path" : "objs.json",
+    "run_mode" : 0, 
+    "input_names" : ["data"],
+    "input_files" : ["forward_objs_detector_a1m_test.bin"],
+    "input_sizes" : [[3, 1920, 1056]],
+    "means" : [[0.0, 0.0, 0.0]],
+    "scales" :[[0.00390625, 0.00390625, 0.00390625]],
+    "output_names" : [],
+    "output_sizes" : [],
+    "pad" : 1,
+    "unsigned_out" : true,
+    "cpu_id" : 7
+}
